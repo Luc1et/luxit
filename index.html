@@ -2,11 +2,92 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
-  <title>LUXIT – právě začínám</title>
+  <title>LUXIT — Vaše světlo v chaosu technologií</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="LUXIT – vaše světlo v chaosu technologií. Pomůžu ti udělat v digitálním světě pořádek – jednoduše, lidsky a bez zbytečného restartování.">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>LUXIT.cz</h1>
-  <p>Právě začínám. Tenhle web je zatím jen malá vizitka – postupně tu poroste víc informací.</p>
+  <!-- Jemné akvarelové pozadí -->
+  <div class="bg-layer bg-layer--one"></div>
+  <div class="bg-layer bg-layer--two"></div>
+
+  <header class="site-header">
+    <a href="/" class="logo-link">
+      <!-- Uprav cestu k logu podle svého projektu -->
+      <img src="assets/logo-luxit.png" alt="LUXIT logo" class="logo" />
+    </a>
+  </header>
+
+  <main class="page">
+    <section class="hero" data-animate="fade-up">
+      <div class="hero-text">
+        <p class="hero-kicker">LUXIT — vaše světlo v chaosu technologií</p>
+        <h1>Technika tě nemusí štvát. Stačí ji mít zkrocenou.</h1>
+
+        <p class="hero-lead">
+          Rozjíždím projekt pro všechny, kterým technika pije krev.
+          Protože ruku na srdce — dneska už se jí prostě nevyhneš.
+          A občas vytáčí úplně každého.
+        </p>
+
+        <p>
+          Ať už je pro tebe technika nutné zlo, nebo tě baví až moc…
+          <strong>dáme tomu řád.</strong>
+        </p>
+
+        <ul class="hero-list">
+          <li>žongluješ mezi školkou, klienty a věčným „proč to sakra nefunguje?!“</li>
+          <li>máš pocit, že ti technologie pomalu přerůstají přes hlavu</li>
+          <li>nebo jen kroutíš hlavou nad tím, proč tvůj počítač zase vstal levou nohou</li>
+        </ul>
+
+        <p>
+          → pořád jsi úplně normální člověk. <br />
+          Jen technika je občas… no… technika.
+        </p>
+
+        <p>
+          Pomůžu ti udělat v digitálním světě pořádek.
+          Jednoduše, lidsky a bez zbytečného „zkus to restartovat“.
+          Překládám z IT do lidské řeči a zpět.
+        </p>
+
+        <div class="hero-contact" data-animate="fade-up">
+          <p class="hero-contact-label">💬 Potřebuješ něco rozmotat?</p>
+          <a href="mailto:lucie@luxit.cz" class="hero-contact-link">
+            lucie@luxit.cz
+          </a>
+        </div>
+
+        <p class="hero-footnote">
+          Díky, že už jsi tady, i když pořádný web teprve vzniká. 😄
+        </p>
+      </div>
+
+      <div class="hero-visual" data-animate="fade-up">
+        <!-- Sem pak doplníš vlastní hero ilustraci -->
+        <div class="hero-card">
+          <div class="hero-card-accent"></div>
+          <div class="hero-card-body">
+            <p class="hero-card-title">LUXIT v kostce</p>
+            <p class="hero-card-text">
+              Lidský překlad mezi světem běžných lidí a technikou.
+              Jemný chaos před, klid a pořádek po.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-pill hero-pill--time">⏱ Úspora času</div>
+        <div class="hero-pill hero-pill--clarity">✨ Klid &amp; pořádek</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> LUXIT · Lucie</p>
+  </footer>
+
+  <script src="main.js" defer></script>
 </body>
 </html>
