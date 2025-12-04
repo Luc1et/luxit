@@ -3,7 +3,7 @@
   --bg-accent: #f6f0e8;
   --text-main: #202430;
   --text-soft: #555b69;
-  --accent: #f1b648;       /* jemně teplá, ale neagresivní */
+  --accent: #f1b648;
   --accent-soft: #ffdca0;
   --border-soft: #e6ddcf;
   --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
@@ -94,7 +94,7 @@ body {
 }
 
 .logo {
-  height: 52px; /* zvětšeno i pro mobil */
+  height: 56px; /* větší logo i na mobilu */
   width: auto;
   opacity: 0;
   transform: translateX(-32px);
@@ -115,7 +115,7 @@ body {
 
 @media (min-width: 900px) {
   .logo {
-    height: 82px; /* výrazně větší logo na desktopu */
+    height: 88px; /* velké logo na desktopu */
   }
 }
 
@@ -229,7 +229,7 @@ body {
 
 .hero-footnote {
   font-size: 0.92rem;
-  color: #7a7f8c;
+  color: #7c808d;
   margin-top: 10px;
 }
 
@@ -240,61 +240,38 @@ body {
   min-height: 260px;
 }
 
-/* akvarelové listy vpravo */
+/* Akvarelový list – měkké pozadí na pravé straně */
+
 .hero-illustration {
   position: absolute;
-  inset: -40px -40px -80px 18%;
+  top: -40px;
+  right: -90px;
+  width: 520px;
+  height: auto;
   pointer-events: none;
   z-index: 0;
 }
 
-.leaf {
-  position: absolute;
-  display: block;
-  max-width: min(340px, 70vw);
+.leaf-hero {
+  width: 100%;
   height: auto;
-  opacity: 0.95;
-  filter: drop-shadow(0 14px 32px rgba(15, 23, 42, 0.16));
-  image-rendering: auto;
+  opacity: 0.32; /* jemné, pastelové */
+  transform: rotate(-6deg);
+  filter: blur(0.6px) drop-shadow(0 18px 42px rgba(15, 23, 42, 0.09));
+  mix-blend-mode: multiply; /* přirozené spojení s pozadím */
+  transform-origin: center;
+  animation: leafSlowFloat 28s ease-in-out infinite alternate;
 }
 
-/* vysoký list – lehce nakloněný nahoru */
-.leaf--primary {
-  right: -38px;
-  top: -16px;
-  animation: leafPrimary 26s ease-in-out infinite alternate;
-}
-
-/* jemný doplněk dole – můžeš klidně dát i průhledný PNG, funguje to stejně */
-.leaf--secondary {
-  right: 32px;
-  bottom: -70px;
-  max-width: min(260px, 60vw);
-  opacity: 0.72;
-  animation: leafSecondary 32s ease-in-out infinite alternate;
-}
-
-@keyframes leafPrimary {
+@keyframes leafSlowFloat {
   0% {
-    transform: translate3d(0, 0, 0) rotate(4deg);
+    transform: translate3d(0, 0, 0) rotate(-6deg);
   }
   50% {
-    transform: translate3d(-6px, -4px, 0) rotate(5deg);
+    transform: translate3d(-8px, -12px, 0) rotate(-4deg);
   }
   100% {
-    transform: translate3d(4px, 3px, 0) rotate(3deg);
-  }
-}
-
-@keyframes leafSecondary {
-  0% {
-    transform: translate3d(2px, 0, 0) rotate(-6deg) scale(0.96);
-  }
-  50% {
-    transform: translate3d(-3px, -5px, 0) rotate(-4deg) scale(0.98);
-  }
-  100% {
-    transform: translate3d(3px, 4px, 0) rotate(-7deg) scale(0.95);
+    transform: translate3d(6px, 9px, 0) rotate(-7deg);
   }
 }
 
@@ -304,7 +281,7 @@ body {
   position: relative;
   z-index: 1;
   border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   box-shadow: var(--shadow-soft);
   border: 1px solid rgba(235, 223, 206, 0.9);
   padding: 18px 18px 16px;
@@ -344,7 +321,7 @@ body {
   color: #343844;
 }
 
-/* Jemné „štítky“ s mikro pohybem */
+/* Jemný štítek */
 
 .hero-pill {
   position: absolute;
@@ -358,30 +335,11 @@ body {
   backdrop-filter: blur(6px);
   transform: translate3d(0, 0, 0);
   will-change: transform;
-  animation: pillFloat 11s ease-in-out infinite alternate;
-}
-
-.hero-pill--time {
-  top: 12%;
-  right: 12%;
 }
 
 .hero-pill--clarity {
-  bottom: 8%;
-  left: 10%;
-  animation-duration: 15s;
-}
-
-@keyframes pillFloat {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    transform: translate3d(-3px, -4px, 0);
-  }
-  100% {
-    transform: translate3d(4px, 2px, 0);
-  }
+  bottom: 6%;
+  left: 6%;
 }
 
 /* Scroll animace – default hidden */
@@ -428,17 +386,14 @@ body {
   }
 
   .hero-illustration {
-    inset: -10px -20px -40px 6%;
+    top: -10px;
+    right: -40px;
+    width: 340px;
   }
 
-  .leaf {
-    max-width: min(230px, 75vw);
-    filter: drop-shadow(0 10px 24px rgba(15, 23, 42, 0.12));
-  }
-
-  .hero-pill--time {
-    top: 4%;
-    right: 6%;
+  .leaf-hero {
+    max-height: 300px;
+    filter: blur(0.5px) drop-shadow(0 10px 24px rgba(15, 23, 42, 0.12));
   }
 
   .hero-pill--clarity {
