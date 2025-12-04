@@ -13,7 +13,29 @@
     <!-- Jemné akvarelové fleky v pozadí -->
     <div class="bg-layer bg-layer--one" aria-hidden="true"></div>
     <div class="bg-layer bg-layer--two" aria-hidden="true"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>LUXIT – Vaše světlo v chaosu technologií</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Jemné akvarelové fleky v pozadí -->
+    <div class="bg-layer bg-layer--one" aria-hidden="true"></div>
+    <div class="bg-layer bg-layer--two" aria-hidden="true"></div>
 
+    <header class="site-header">
+      <a href="/" class="logo-link">
+        <img
+          src="assets/images/logo-luxit.png"
+          alt="LUXIT – vaše světlo v chaosu technologií"
+          class="logo"
+        />
+      </a>
+    </header>
     <header class="site-header">
       <a href="/" class="logo-link">
         <img
@@ -30,7 +52,18 @@
           <p class="hero-kicker">Lucie · LUXIT</p>
 
           <h1 id="hero-title">Luxit — Vaše světlo v chaosu technologií</h1>
+    <main class="page">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-text" data-animate="fade-up">
+          <p class="hero-kicker">Lucie · LUXIT</p>
 
+          <h1 id="hero-title">Luxit — Vaše světlo v chaosu technologií</h1>
+
+          <p class="hero-lead">
+            Rozjíždím projekt pro všechny, kterým technika pije krev.
+            Protože ruku na srdce — dneska už se jí prostě nevyhneš.
+            A občas vytáčí úplně každého.
+          </p>
           <p class="hero-lead">
             Rozjíždím projekt pro všechny, kterým technika pije krev.
             Protože ruku na srdce — dneska už se jí prostě nevyhneš.
@@ -41,7 +74,16 @@
             Ať už je pro tebe technika nutné zlo, nebo tě baví až moc…
             <strong>dáme tomu řád.</strong>
           </p>
+          <p>
+            Ať už je pro tebe technika nutné zlo, nebo tě baví až moc…
+            <strong>dáme tomu řád.</strong>
+          </p>
 
+          <ul class="hero-list">
+            <li>žongluješ mezi školkou, klienty a věčným „proč to sakra nefunguje?!“</li>
+            <li>máš pocit, že ti technologie pomalu přerůstají přes hlavu</li>
+            <li>nebo jen kroutíš hlavou nad tím, proč tvůj počítač zase vstal levou nohou</li>
+          </ul>
           <ul class="hero-list">
             <li>žongluješ mezi školkou, klienty a věčným „proč to sakra nefunguje?!“</li>
             <li>máš pocit, že ti technologie pomalu přerůstají přes hlavu</li>
@@ -52,7 +94,16 @@
             → pořád jsi úplně normální člověk. <br />
             Jen technika je občas… no… technika.
           </p>
+          <p>
+            → pořád jsi úplně normální člověk. <br />
+            Jen technika je občas… no… technika.
+          </p>
 
+          <p>
+            Pomůžu ti udělat v digitálním světě pořádek.
+            Jednoduše, lidsky a bez zbytečného „zkus to restartovat“.
+            Překládám z IT do lidské řeči a zpět.
+          </p>
           <p>
             Pomůžu ti udělat v digitálním světě pořádek.
             Jednoduše, lidsky a bez zbytečného „zkus to restartovat“.
@@ -65,7 +116,17 @@
               lucie@luxit.cz
             </a>
           </div>
+          <div class="hero-contact" data-animate="fade-up">
+            <p class="hero-contact-label">💬 Potřebuješ něco rozmotat?</p>
+            <a href="mailto:lucie@luxit.cz" class="hero-contact-link">
+              lucie@luxit.cz
+            </a>
+          </div>
 
+          <p class="hero-footnote">
+            Díky, že už jsi tady, i když pořádný web teprve vzniká. 😄
+          </p>
+        </div>
           <p class="hero-footnote">
             Díky, že už jsi tady, i když pořádný web teprve vzniká. 😄
           </p>
@@ -96,11 +157,21 @@
         </div>
       </section>
     </main>
+          <div class="hero-pill hero-pill--time">⏱ Úspora času</div>
+          <div class="hero-pill hero-pill--clarity">✨ Klid &amp; pořádek</div>
+        </div>
+      </section>
+    </main>
 
     <footer class="site-footer">
       <p>© <span id="year"></span> LUXIT · Lucie</p>
     </footer>
+    <footer class="site-footer">
+      <p>© <span id="year"></span> LUXIT · Lucie</p>
+    </footer>
 
+    <script src="main.js" defer></script>
+  </body>
     <script src="main.js" defer></script>
   </body>
 </html>
