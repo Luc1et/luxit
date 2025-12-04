@@ -13,13 +13,15 @@
 }
 
 /* Reset-ish */
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -35,6 +37,7 @@ body {
 }
 
 /* Jemné akvarelové fleky v pozadí */
+
 .bg-layer {
   position: fixed;
   inset: -20%;
@@ -73,7 +76,7 @@ body {
   }
 }
 
-/* Layout */
+/* Header + logo */
 
 .site-header {
   position: relative;
@@ -91,7 +94,7 @@ body {
 }
 
 .logo {
-  height: 40px;
+  height: 52px; /* zvětšeno i pro mobil */
   width: auto;
   opacity: 0;
   transform: translateX(-32px);
@@ -108,6 +111,12 @@ body {
 
 .logo-link:hover .logo {
   transform: translateX(1px) translateY(-1px);
+}
+
+@media (min-width: 900px) {
+  .logo {
+    height: 82px; /* výrazně větší logo na desktopu */
+  }
 }
 
 /* Page wrapper */
@@ -228,11 +237,72 @@ body {
 
 .hero-visual {
   position: relative;
-  min-height: 220px;
+  min-height: 260px;
 }
+
+/* akvarelové listy vpravo */
+.hero-illustration {
+  position: absolute;
+  inset: -40px -40px -80px 18%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.leaf {
+  position: absolute;
+  display: block;
+  max-width: min(340px, 70vw);
+  height: auto;
+  opacity: 0.95;
+  filter: drop-shadow(0 14px 32px rgba(15, 23, 42, 0.16));
+  image-rendering: auto;
+}
+
+/* vysoký list – lehce nakloněný nahoru */
+.leaf--primary {
+  right: -38px;
+  top: -16px;
+  animation: leafPrimary 26s ease-in-out infinite alternate;
+}
+
+/* jemný doplněk dole – můžeš klidně dát i průhledný PNG, funguje to stejně */
+.leaf--secondary {
+  right: 32px;
+  bottom: -70px;
+  max-width: min(260px, 60vw);
+  opacity: 0.72;
+  animation: leafSecondary 32s ease-in-out infinite alternate;
+}
+
+@keyframes leafPrimary {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(4deg);
+  }
+  50% {
+    transform: translate3d(-6px, -4px, 0) rotate(5deg);
+  }
+  100% {
+    transform: translate3d(4px, 3px, 0) rotate(3deg);
+  }
+}
+
+@keyframes leafSecondary {
+  0% {
+    transform: translate3d(2px, 0, 0) rotate(-6deg) scale(0.96);
+  }
+  50% {
+    transform: translate3d(-3px, -5px, 0) rotate(-4deg) scale(0.98);
+  }
+  100% {
+    transform: translate3d(3px, 4px, 0) rotate(-7deg) scale(0.95);
+  }
+}
+
+/* karta v popředí */
 
 .hero-card {
   position: relative;
+  z-index: 1;
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.92);
   box-shadow: var(--shadow-soft);
@@ -349,12 +419,21 @@ body {
 
   .hero-visual {
     order: -1;
-    min-height: 180px;
+    min-height: 210px;
   }
 
   .hero-card {
     margin-left: 0;
     max-width: 100%;
+  }
+
+  .hero-illustration {
+    inset: -10px -20px -40px 6%;
+  }
+
+  .leaf {
+    max-width: min(230px, 75vw);
+    filter: drop-shadow(0 10px 24px rgba(15, 23, 42, 0.12));
   }
 
   .hero-pill--time {
