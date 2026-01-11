@@ -1,398 +1,187 @@
 :root {
-  --bg: #fdfaf5;
-  --bg-accent: #f6f0e8;
-  --text-main: #202430;
-  --text-soft: #555b69;
-  --accent: #f1b648;       /* jemně teplá, ale neagresivní */
-  --accent-soft: #ffdca0;
-  --border-soft: #e6ddcf;
-  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
-  --radius-lg: 18px;
-  --radius-pill: 999px;
-  --transition-soft: 220ms ease-out;
+  /* Brief — uzamčené barvy */
+  --bg: #F9F9F8;
+  --text: #1F1F1F;
+  --text-soft: #5F5F5F;
+  --accent: #8FAEA3;
+
+  /* Jemné UI tokeny */
+  --maxw: 780px;
+  --pad-x: 22px;
+  --radius: 16px;
+  --border: rgba(31, 31, 31, 0.10);
+  --shadow: 0 18px 45px rgba(31, 31, 31, 0.08);
+  --ease: 220ms ease-out;
+
+  /* Vibe intenzita (držím to low-key) */
+  --wash-1: rgba(143, 174, 163, 0.16);
+  --wash-2: rgba(143, 174, 163, 0.10);
+  --wash-3: rgba(31, 31, 31, 0.05);
 }
 
 /* Reset-ish */
-
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-}
+*::after { box-sizing: border-box; }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
+html, body { margin: 0; padding: 0; }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "San Francisco", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
   background: var(--bg);
-  color: var(--text-main);
+  color: var(--text);
   min-height: 100vh;
-  position: relative;
   overflow-x: hidden;
 }
 
-/* Jemné akvarelové fleky v pozadí */
-
+/* Jemné pozadí (wash) */
 .bg-layer {
   position: fixed;
-  inset: -20%;
-  background-repeat: no-repeat;
-  background-size: 60% 60%;
-  opacity: 0.5;
+  inset: -25%;
   pointer-events: none;
-  z-index: -2;
-  filter: blur(0.3px);
-  animation: bgDrift 42s ease-in-out infinite alternate;
+  z-index: -1;
+  opacity: 0.55;
+  filter: blur(0.2px);
+  background-repeat: no-repeat;
+  background-size: 70% 70%;
+  animation: bgDrift 44s ease-in-out infinite alternate;
 }
 
 .bg-layer--one {
   background-image:
-    radial-gradient(circle at 10% 20%, rgba(252, 226, 178, 0.65) 0, transparent 55%),
-    radial-gradient(circle at 80% 70%, rgba(200, 229, 240, 0.6) 0, transparent 55%);
+    radial-gradient(circle at 12% 22%, var(--wash-1) 0, transparent 58%),
+    radial-gradient(circle at 88% 75%, var(--wash-2) 0, transparent 60%);
 }
 
 .bg-layer--two {
-  background-image:
-    radial-gradient(circle at 20% 80%, rgba(234, 210, 255, 0.4) 0, transparent 50%),
-    radial-gradient(circle at 90% 10%, rgba(227, 245, 219, 0.55) 0, transparent 55%);
   opacity: 0.45;
-  animation-duration: 55s;
+  animation-duration: 58s;
+  background-image:
+    radial-gradient(circle at 18% 82%, var(--wash-3) 0, transparent 55%),
+    radial-gradient(circle at 92% 12%, rgba(143, 174, 163, 0.08) 0, transparent 58%);
 }
 
 @keyframes bgDrift {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(8px, -6px, 0) scale(1.02);
-  }
-  100% {
-    transform: translate3d(-6px, 10px, 0) scale(1.01);
-  }
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(8px, -6px, 0) scale(1.02); }
+  100% { transform: translate3d(-6px, 10px, 0) scale(1.01); }
 }
 
-/* Header + logo */
-
-.site-header {
-  position: relative;
-  z-index: 2;
-  padding: 18px 24px 8px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.logo-link {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.logo {
-  height: 52px; /* zvětšeno i pro mobil */
-  width: auto;
-  opacity: 0;
-  transform: translateX(-32px);
-  filter: drop-shadow(0 6px 18px rgba(15, 23, 42, 0.16));
-  transition:
-    opacity 480ms ease-out,
-    transform 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-.logo--visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.logo-link:hover .logo {
-  transform: translateX(1px) translateY(-1px);
-}
-
-@media (min-width: 900px) {
-  .logo {
-    height: 82px; /* výrazně větší logo na desktopu */
-  }
-}
-
-/* Page wrapper */
-
+/* Layout */
 .page {
-  position: relative;
-  max-width: 1080px;
+  max-width: var(--maxw);
   margin: 0 auto;
-  padding: 32px 20px 56px;
+  padding: 56px var(--pad-x) 40px;
 }
 
-/* Hero */
-
-.hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.9fr);
-  gap: 32px;
-  align-items: center;
+/* Typografie */
+.brand {
+  margin: 0;
+  font-size: clamp(2.1rem, 4.2vw, 3.0rem);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
 }
 
-.hero-text {
-  position: relative;
-  z-index: 1;
-}
-
-.hero-kicker {
-  font-size: 0.9rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.name {
+  margin: 10px 0 0;
   color: var(--text-soft);
+  font-size: 1.05rem;
+}
+
+.content {
+  margin-top: 34px;
+}
+
+.claim {
+  margin: 0;
+  font-size: 1.06rem;
+  line-height: 1.55;
+  max-width: 62ch;
+}
+
+.sub {
+  margin: 14px 0 0;
+  color: var(--text-soft);
+  font-size: 0.96rem;
+  line-height: 1.55;
+  max-width: 70ch;
+}
+
+/* Projekty placeholder – velmi klidné */
+.projects {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.projects-text {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.96rem;
+}
+
+/* Kontakt */
+.contact {
+  margin-top: 26px;
+}
+
+.contact-label {
   margin: 0 0 8px;
-}
-
-.hero h1 {
-  font-size: clamp(1.9rem, 2.7vw, 2.3rem);
-  line-height: 1.15;
-  margin: 0 0 16px;
-}
-
-.hero-lead {
-  font-size: 1.02rem;
-  color: var(--text-soft);
-  margin: 0 0 16px;
-}
-
-.hero p {
-  margin: 0 0 12px;
+  font-size: 0.92rem;
   color: var(--text-soft);
 }
 
-.hero p strong {
-  color: var(--text-main);
-}
-
-.hero-list {
-  padding-left: 1.2rem;
-  margin: 4px 0 16px;
-  color: var(--text-soft);
-}
-
-.hero-list li {
-  margin-bottom: 4px;
-}
-
-.hero-contact {
-  margin: 22px 0 10px;
-}
-
-.hero-contact-label {
-  margin: 0 0 4px;
-  font-weight: 500;
-  color: var(--text-main);
-}
-
-.hero-contact-link {
+.contact-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--border-soft);
-  background: linear-gradient(135deg, #ffffff, #fff8eb);
-  box-shadow: var(--shadow-soft);
-  color: var(--text-main);
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: var(--shadow);
+  color: var(--text);
   text-decoration: none;
-  font-weight: 500;
-  font-size: 0.98rem;
-  transition:
-    transform var(--transition-soft),
-    box-shadow var(--transition-soft),
-    background 180ms ease-out;
+  font-weight: 520;
+  transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
 }
 
-.hero-contact-link::after {
+.contact-link::after {
   content: "→";
-  font-size: 0.9rem;
+  color: var(--accent);
   transform: translateX(0);
-  transition: transform var(--transition-soft);
+  transition: transform var(--ease);
 }
 
-.hero-contact-link:hover {
+.contact-link:hover {
   transform: translateY(-1px);
-  box-shadow: 0 22px 40px rgba(15, 23, 42, 0.12);
-  background: linear-gradient(135deg, #ffffff, #fff2d5);
+  box-shadow: 0 22px 52px rgba(31, 31, 31, 0.10);
+  border-color: rgba(143, 174, 163, 0.28);
 }
 
-.hero-contact-link:hover::after {
+.contact-link:hover::after {
   transform: translateX(3px);
 }
 
-.hero-footnote {
+.contact-link:focus-visible {
+  outline: 3px solid rgba(143, 174, 163, 0.45);
+  outline-offset: 3px;
+}
+
+/* Footer */
+.footer {
+  margin-top: 48px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  color: var(--text-soft);
   font-size: 0.92rem;
-  color: #7a7f8c;
-  margin-top: 10px;
 }
 
-/* Hero vizuální část */
-
-.hero-visual {
-  position: relative;
-  min-height: 260px;
-}
-
-/* akvarelové listy vpravo */
-.hero-illustration {
-  position: absolute;
-  inset: -40px -40px -80px 18%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.leaf {
-  position: absolute;
-  display: block;
-  max-width: min(340px, 70vw);
-  height: auto;
-  opacity: 0.95;
-  filter: drop-shadow(0 14px 32px rgba(15, 23, 42, 0.16));
-  image-rendering: auto;
-}
-
-/* vysoký list – lehce nakloněný nahoru */
-.leaf--primary {
-  right: -38px;
-  top: -16px;
-  animation: leafPrimary 26s ease-in-out infinite alternate;
-}
-
-/* jemný doplněk dole – můžeš klidně dát i průhledný PNG, funguje to stejně */
-.leaf--secondary {
-  right: 32px;
-  bottom: -70px;
-  max-width: min(260px, 60vw);
-  opacity: 0.72;
-  animation: leafSecondary 32s ease-in-out infinite alternate;
-}
-
-@keyframes leafPrimary {
-  0% {
-    transform: translate3d(0, 0, 0) rotate(4deg);
-  }
-  50% {
-    transform: translate3d(-6px, -4px, 0) rotate(5deg);
-  }
-  100% {
-    transform: translate3d(4px, 3px, 0) rotate(3deg);
-  }
-}
-
-@keyframes leafSecondary {
-  0% {
-    transform: translate3d(2px, 0, 0) rotate(-6deg) scale(0.96);
-  }
-  50% {
-    transform: translate3d(-3px, -5px, 0) rotate(-4deg) scale(0.98);
-  }
-  100% {
-    transform: translate3d(3px, 4px, 0) rotate(-7deg) scale(0.95);
-  }
-}
-
-/* karta v popředí */
-
-.hero-card {
-  position: relative;
-  z-index: 1;
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(235, 223, 206, 0.9);
-  padding: 18px 18px 16px;
-  max-width: 320px;
-  margin-left: auto;
-  backdrop-filter: blur(7px);
-  overflow: hidden;
-}
-
-.hero-card-accent {
-  position: absolute;
-  inset: -18%;
-  background-image:
-    radial-gradient(circle at 0% 0%, rgba(255, 228, 193, 0.9) 0, transparent 55%),
-    radial-gradient(circle at 85% 120%, rgba(200, 227, 252, 0.65) 0, transparent 55%);
-  opacity: 0.55;
-  mix-blend-mode: multiply;
-  pointer-events: none;
-}
-
-.hero-card-body {
-  position: relative;
-  z-index: 1;
-}
-
-.hero-card-title {
-  margin: 0 0 6px;
-  font-size: 0.9rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #6c6f78;
-}
-
-.hero-card-text {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #343844;
-}
-
-/* Jemné „štítky“ s mikro pohybem */
-
-.hero-pill {
-  position: absolute;
-  font-size: 0.84rem;
-  padding: 6px 12px;
-  border-radius: var(--radius-pill);
-  border: 1px dashed rgba(224, 203, 170, 0.9);
-  background: rgba(255, 252, 245, 0.9);
-  color: #474a55;
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12);
-  backdrop-filter: blur(6px);
-  transform: translate3d(0, 0, 0);
-  will-change: transform;
-  animation: pillFloat 11s ease-in-out infinite alternate;
-}
-
-.hero-pill--time {
-  top: 12%;
-  right: 12%;
-}
-
-.hero-pill--clarity {
-  bottom: 8%;
-  left: 10%;
-  animation-duration: 15s;
-}
-
-@keyframes pillFloat {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    transform: translate3d(-3px, -4px, 0);
-  }
-  100% {
-    transform: translate3d(4px, 2px, 0);
-  }
-}
-
-/* Scroll animace – default hidden */
-
+/* Jemné “vibe” animace (fade-up) */
 [data-animate] {
   opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity 420ms ease-out,
-    transform 420ms cubic-bezier(0.19, 1, 0.22, 1);
-  will-change: opacity, transform;
+  transform: translateY(10px);
+  transition: opacity 520ms ease-out, transform 520ms ease-out;
 }
 
 [data-animate].is-visible {
@@ -400,53 +189,8 @@ body {
   transform: translateY(0);
 }
 
-/* Footer */
-
-.site-footer {
-  text-align: center;
-  font-size: 0.85rem;
-  color: #7c808d;
-  padding: 8px 16px 18px;
-}
-
-/* Responsivita */
-
-@media (max-width: 800px) {
-  .hero {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 32px;
-  }
-
-  .hero-visual {
-    order: -1;
-    min-height: 210px;
-  }
-
-  .hero-card {
-    margin-left: 0;
-    max-width: 100%;
-  }
-
-  .hero-illustration {
-    inset: -10px -20px -40px 6%;
-  }
-
-  .leaf {
-    max-width: min(230px, 75vw);
-    filter: drop-shadow(0 10px 24px rgba(15, 23, 42, 0.12));
-  }
-
-  .hero-pill--time {
-    top: 4%;
-    right: 6%;
-  }
-
-  .hero-pill--clarity {
-    bottom: 4%;
-    left: 4%;
-  }
-
-  .page {
-    padding-top: 24px;
-  }
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .bg-layer { animation: none; }
+  [data-animate] { opacity: 1; transform: none; transition: none; }
 }

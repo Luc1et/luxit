@@ -1,114 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <title>LUXIT – Vaše světlo v chaosu technologií</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Jemné akvarelové fleky v pozadí -->
-    <div class="bg-layer bg-layer--one" aria-hidden="true"></div>
-    <div class="bg-layer bg-layer--two" aria-hidden="true"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LUXIT · Lucie</title>
+  <meta name="description" content="Pomoc s technikou, aplikacemi a digitálními věcmi, které zrovna potřebujete vyřešit." />
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-    <header class="site-header">
-      <a href="/" class="logo-link">
-        <img
-          src="assets/images/logo-luxit.png"
-          alt="LUXIT – vaše světlo v chaosu technologií"
-          class="logo"
-        />
-      </a>
+<body>
+  <!-- Jemné “wash” pozadí (vibe, ale pořád decentní) -->
+  <div class="bg-layer bg-layer--one" aria-hidden="true"></div>
+  <div class="bg-layer bg-layer--two" aria-hidden="true"></div>
+
+  <main class="page">
+    <header class="top" data-animate="fade-up">
+      <h1 class="brand">LUXIT</h1>
+      <p class="name">Lucie</p>
     </header>
 
-    <main class="page">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-text" data-animate="fade-up">
-          <p class="hero-kicker">Lucie · LUXIT</p>
+    <section class="content" aria-label="Vizitka" data-animate="fade-up">
+      <p class="claim">
+        Pomoc s technikou, aplikacemi a digitálními věcmi, které zrovna potřebujete vyřešit.
+      </p>
 
-          <h1 id="hero-title">Luxit — Vaše světlo v chaosu technologií</h1>
+      <p class="sub">
+        Tento web slouží jako jednoduchý rozcestník mých projektů a aplikací.
+      </p>
 
-          <p class="hero-lead">
-            Rozjíždím projekt pro všechny, kterým technika pije krev.
-            Protože ruku na srdce — dneska už se jí prostě nevyhneš.
-            A občas vytáčí úplně každého.
-          </p>
+      <div class="projects" data-animate="fade-up">
+        <p class="projects-text">
+          Projekty a aplikace budou postupně doplňovány.
+        </p>
+      </div>
 
-          <p>
-            Ať už je pro tebe technika nutné zlo, nebo tě baví až moc…
-            <strong>dáme tomu řád.</strong>
-          </p>
+      <div class="contact" data-animate="fade-up">
+        <p class="contact-label">Kontakt</p>
+        <a class="contact-link" href="mailto:lucie@luxit.cz">lucie@luxit.cz</a>
+      </div>
+    </section>
 
-          <ul class="hero-list">
-            <li>žongluješ mezi školkou, klienty a věčným „proč to sakra nefunguje?!“</li>
-            <li>máš pocit, že ti technologie pomalu přerůstají přes hlavu</li>
-            <li>nebo jen kroutíš hlavou nad tím, proč tvůj počítač zase vstal levou nohou</li>
-          </ul>
-
-          <p>
-            → pořád jsi úplně normální člověk. <br />
-            Jen technika je občas… no… technika.
-          </p>
-
-          <p>
-            Pomůžu ti udělat v digitálním světě pořádek.
-            Jednoduše, lidsky a bez zbytečného „zkus to restartovat“.
-            Překládám z IT do lidské řeči a zpět.
-          </p>
-
-          <div class="hero-contact" data-animate="fade-up">
-            <p class="hero-contact-label">💬 Potřebuješ něco rozmotat?</p>
-            <a href="mailto:lucie@luxit.cz" class="hero-contact-link">
-              lucie@luxit.cz
-            </a>
-          </div>
-
-          <p class="hero-footnote">
-            Díky, že už jsi tady, i když pořádný web teprve vzniká. 😄
-          </p>
-        </div>
-
-        <div class="hero-visual" data-animate="fade-up">
-          <!-- Akvarelové listy – čistě dekorativní -->
-          <div class="hero-illustration" aria-hidden="true">
-            <!-- hlavní vysoký list -->
-            <img
-              src="assets/images/list4.png"
-              alt=""
-              class="leaf leaf--primary"
-            />
-            <!-- jemný doplněk, trochu níž -->
-            <img
-              src="assets/images/list1.png"
-              alt=""
-              class="leaf leaf--secondary"
-            />
-          </div>
-
-          <div class="hero-card">
-            <div class="hero-card-accent"></div>
-            <div class="hero-card-body">
-              <p class="hero-card-title">LUXIT v kostce</p>
-              <p class="hero-card-text">
-                Lidský překlad mezi světem běžných lidí a technikou.
-                Jemný chaos před, klid a pořádek po.
-              </p>
-            </div>
-          </div>
-
-          <div class="hero-pill hero-pill--time">⏱ Úspora času</div>
-          <div class="hero-pill hero-pill--clarity">✨ Klid &amp; pořádek</div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <p>© <span id="year"></span> LUXIT · Lucie</p>
+    <footer class="footer" data-animate="fade-up">
+      <p>© <span id="year">2026</span> · Lucie</p>
     </footer>
+  </main>
 
-    <script src="main.js" defer></script>
-  </body>
+  <script src="main.js" defer></script>
+</body>
 </html>
