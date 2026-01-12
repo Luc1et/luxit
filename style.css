@@ -228,11 +228,34 @@ body {
     grid-template-rows: auto;
   }
 
+  .cell {
+    text-align: center;
+  }
+
   .cell--headline,
   .cell--contact {
     border-left: 0;
   }
+
+  /* Logo na střed */
+  .logo-link {
+    justify-content: center;
+  }
+
+  /* Textové bloky */
+  .headline,
+  .info {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Email „pill“ vycentrovat */
+  .email {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
+
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
