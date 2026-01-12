@@ -3,45 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LUXIT · Lucie</title>
-  <meta name="description" content="Pomoc s technikou, aplikacemi a digitálními věcmi, které zrovna potřebujete vyřešit." />
+  <title>LUXIT</title>
+  <meta name="description" content="Pomáhám s weby, aplikacemi a čímkoli, co vás zrovna v digitálním světě pálí." />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <!-- Jemné “wash” pozadí (vibe, ale pořád decentní) -->
+  <!-- Vibe background přes CELÝ viewport -->
   <div class="bg-layer bg-layer--one" aria-hidden="true"></div>
   <div class="bg-layer bg-layer--two" aria-hidden="true"></div>
 
   <main class="page">
-    <header class="top" data-animate="fade-up">
-      <h1 class="brand">LUXIT</h1>
-      <p class="name">Lucie</p>
-    </header>
+    <section class="card">
+      <div class="grid">
+        <!-- (1,1) Logo -->
+        <div class="cell cell--logo">
+          <a class="logo-link" href="/" aria-label="LUXIT">
+            <!-- Uprav cestu na tvoje logo z původního webu -->
+            <img class="logo" src="assets/images/logo-luxit.png" alt="LUXIT" />
+          </a>
+        </div>
 
-    <section class="content" aria-label="Vizitka" data-animate="fade-up">
-      <p class="claim">
-        Pomoc s technikou, aplikacemi a digitálními věcmi, které zrovna potřebujete vyřešit.
-      </p>
+        <!-- (1,2) Jedna věta -->
+        <div class="cell cell--headline" data-animate="fade-up">
+          <p class="headline">
+            Pomáhám s weby, aplikacemi a čímkoli, co vás zrovna v digitálním světě pálí.
+          </p>
+        </div>
 
-      <p class="sub">
-        Tento web slouží jako jednoduchý rozcestník mých projektů a aplikací.
-      </p>
+        <!-- (2,1) Info -->
+        <div class="cell cell--info" data-animate="fade-up">
+          <p class="info">
+            Tento web slouží jako jednoduchý rozcestník projektů a aplikací.
+          </p>
+          <p class="info info--soft">
+            Projekty a aplikace budou postupně doplňovány.
+          </p>
+        </div>
 
-      <div class="projects" data-animate="fade-up">
-        <p class="projects-text">
-          Projekty a aplikace budou postupně doplňovány.
-        </p>
-      </div>
-
-      <div class="contact" data-animate="fade-up">
-        <p class="contact-label">Kontakt</p>
-        <a class="contact-link" href="mailto:lucie@luxit.cz">lucie@luxit.cz</a>
+        <!-- (2,2) Kontakt (jen email) -->
+        <div class="cell cell--contact" data-animate="fade-up">
+          <a class="email" href="mailto:lucie@luxit.cz">lucie@luxit.cz</a>
+        </div>
       </div>
     </section>
 
     <footer class="footer" data-animate="fade-up">
-      <p>© <span id="year">2026</span> · Lucie</p>
+      <p>© <span id="year">2026</span> · LUXIT</p>
     </footer>
   </main>
 

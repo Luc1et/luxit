@@ -3,12 +3,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  // Jemné fade-up (bez dalších efektů)
+  // Logo „přijede“ zleva
+  const logo = document.querySelector(".logo");
+  const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+
+  if (logo && !reduceMotion) {
+    requestAnimationFrame(() => logo.classList.add("logo--visible"));
+  } else if (logo) {
+    logo.classList.add("logo--visible");
+  }
+
+  // Jemný fade-up (bez parallax)
   const animated = document.querySelectorAll("[data-animate]");
   if (!animated.length) return;
 
-  // Respektuj reduced motion
-  const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
   if (reduceMotion) {
     animated.forEach((el) => el.classList.add("is-visible"));
     return;
@@ -26,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       { threshold: 0.12 }
     );
-
     animated.forEach((el) => observer.observe(el));
   } else {
     animated.forEach((el) => el.classList.add("is-visible"));

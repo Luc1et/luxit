@@ -1,22 +1,27 @@
+
 :root {
-  /* Brief — uzamčené barvy */
+  /* Vizuál / klidný základ */
   --bg: #F9F9F8;
   --text: #1F1F1F;
   --text-soft: #5F5F5F;
   --accent: #8FAEA3;
 
-  /* Jemné UI tokeny */
-  --maxw: 780px;
+  /* Layout */
+  --maxw: 980px;
   --pad-x: 22px;
-  --radius: 16px;
-  --border: rgba(31, 31, 31, 0.10);
-  --shadow: 0 18px 45px rgba(31, 31, 31, 0.08);
-  --ease: 220ms ease-out;
+  --radius: 18px;
 
-  /* Vibe intenzita (držím to low-key) */
-  --wash-1: rgba(143, 174, 163, 0.16);
-  --wash-2: rgba(143, 174, 163, 0.10);
+  /* Surface */
+  --card-bg: rgba(255, 255, 255, 0.58);
+  --border: rgba(31, 31, 31, 0.10);
+  --shadow: 0 20px 55px rgba(31, 31, 31, 0.10);
+
+  /* Vibe wash */
+  --wash-1: rgba(143, 174, 163, 0.18);
+  --wash-2: rgba(143, 174, 163, 0.11);
   --wash-3: rgba(31, 31, 31, 0.05);
+
+  --ease: 220ms ease-out;
 }
 
 /* Reset-ish */
@@ -34,14 +39,13 @@ body {
   overflow-x: hidden;
 }
 
-/* Jemné pozadí (wash) */
+/* Pozadí přes CELÝ viewport */
 .bg-layer {
   position: fixed;
   inset: -25%;
   pointer-events: none;
-  z-index: -1;
+  z-index: -2;
   opacity: 0.55;
-  filter: blur(0.2px);
   background-repeat: no-repeat;
   background-size: 70% 70%;
   animation: bgDrift 44s ease-in-out infinite alternate;
@@ -50,15 +54,15 @@ body {
 .bg-layer--one {
   background-image:
     radial-gradient(circle at 12% 22%, var(--wash-1) 0, transparent 58%),
-    radial-gradient(circle at 88% 75%, var(--wash-2) 0, transparent 60%);
+    radial-gradient(circle at 88% 70%, var(--wash-2) 0, transparent 62%);
 }
 
 .bg-layer--two {
   opacity: 0.45;
   animation-duration: 58s;
   background-image:
-    radial-gradient(circle at 18% 82%, var(--wash-3) 0, transparent 55%),
-    radial-gradient(circle at 92% 12%, rgba(143, 174, 163, 0.08) 0, transparent 58%);
+    radial-gradient(circle at 18% 82%, var(--wash-3) 0, transparent 58%),
+    radial-gradient(circle at 92% 12%, rgba(143, 174, 163, 0.08) 0, transparent 60%);
 }
 
 @keyframes bgDrift {
@@ -67,117 +71,145 @@ body {
   100% { transform: translate3d(-6px, 10px, 0) scale(1.01); }
 }
 
-/* Layout */
+/* Page wrapper */
 .page {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 56px var(--pad-x) 40px;
+  padding: 56px var(--pad-x) 38px;
 }
 
-/* Typografie */
-.brand {
-  margin: 0;
-  font-size: clamp(2.1rem, 4.2vw, 3.0rem);
-  line-height: 1.05;
-  letter-spacing: 0.01em;
+/* Main card — “nachlívečkování” v čisté ploše */
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow: hidden;
 }
 
-.name {
-  margin: 10px 0 0;
-  color: var(--text-soft);
-  font-size: 1.05rem;
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  grid-template-rows: auto auto;
+  gap: 0;
 }
 
-.content {
-  margin-top: 34px;
+/* Optické ukotvení buněk */
+.cell {
+  padding: 26px 26px;
 }
 
-.claim {
-  margin: 0;
-  font-size: 1.06rem;
-  line-height: 1.55;
-  max-width: 62ch;
+.cell--headline,
+.cell--contact {
+  border-left: 1px solid var(--border);
 }
 
-.sub {
-  margin: 14px 0 0;
-  color: var(--text-soft);
-  font-size: 0.96rem;
-  line-height: 1.55;
-  max-width: 70ch;
-}
-
-/* Projekty placeholder – velmi klidné */
-.projects {
-  margin-top: 24px;
-  padding-top: 18px;
+.cell--info,
+.cell--contact {
   border-top: 1px solid var(--border);
 }
 
-.projects-text {
+/* Logo oblast – “levá třetina” vibe */
+.cell--logo {
+  padding: 28px 26px;
+}
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo {
+  width: min(320px, 90%);
+  height: auto;
+
+  opacity: 0;
+  transform: translateX(-34px);
+  filter: drop-shadow(0 16px 38px rgba(31, 31, 31, 0.16));
+  transition:
+    opacity 480ms ease-out,
+    transform 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.logo--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Jedna věta vpravo */
+.headline {
+  margin: 0;
+  font-size: clamp(1.12rem, 2.2vw, 1.35rem);
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  max-width: 58ch;
+}
+
+/* Info vlevo dole */
+.info {
   margin: 0;
   color: var(--text-soft);
-  font-size: 0.96rem;
+  line-height: 1.6;
+  font-size: 0.98rem;
+  max-width: 65ch;
 }
 
-/* Kontakt */
-.contact {
-  margin-top: 26px;
+.info--soft {
+  margin-top: 10px;
+  opacity: 0.9;
 }
 
-.contact-label {
-  margin: 0 0 8px;
-  font-size: 0.92rem;
-  color: var(--text-soft);
-}
-
-.contact-link {
+/* Email vpravo dole – bez “Kontakt” */
+.email {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+
   padding: 10px 16px;
   border-radius: 999px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(143, 174, 163, 0.28);
   background: rgba(255, 255, 255, 0.55);
-  box-shadow: var(--shadow);
+  box-shadow: 0 18px 42px rgba(31, 31, 31, 0.08);
+
   color: var(--text);
   text-decoration: none;
   font-weight: 520;
+
   transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
 }
 
-.contact-link::after {
+.email::after {
   content: "→";
   color: var(--accent);
-  transform: translateX(0);
   transition: transform var(--ease);
 }
 
-.contact-link:hover {
+.email:hover {
   transform: translateY(-1px);
   box-shadow: 0 22px 52px rgba(31, 31, 31, 0.10);
-  border-color: rgba(143, 174, 163, 0.28);
+  border-color: rgba(143, 174, 163, 0.42);
 }
 
-.contact-link:hover::after {
+.email:hover::after {
   transform: translateX(3px);
 }
 
-.contact-link:focus-visible {
+.email:focus-visible {
   outline: 3px solid rgba(143, 174, 163, 0.45);
   outline-offset: 3px;
 }
 
 /* Footer */
 .footer {
-  margin-top: 48px;
-  padding-top: 18px;
-  border-top: 1px solid var(--border);
+  margin-top: 18px;
   color: var(--text-soft);
   font-size: 0.92rem;
 }
 
-/* Jemné “vibe” animace (fade-up) */
+/* Jemné fade-up (vibe, ale klid) */
 [data-animate] {
   opacity: 0;
   transform: translateY(10px);
@@ -189,8 +221,22 @@ body {
   transform: translateY(0);
 }
 
+/* Mobile: pod sebou, ale pořád “karty” */
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .cell--headline,
+  .cell--contact {
+    border-left: 0;
+  }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .bg-layer { animation: none; }
   [data-animate] { opacity: 1; transform: none; transition: none; }
+  .logo { opacity: 1; transform: none; transition: none; }
 }
