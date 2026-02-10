@@ -120,7 +120,7 @@ body {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  background-color: aqua;
+}
 
 .logo {
   width: min(320px, 90%);
@@ -239,10 +239,17 @@ body {
 
   .cell--headline {
     transform: translateY(-0.9em);
+    padding-bottom: 48px;
     display: flex;
     align-items: center;
-  }
+    margin-top: -0.9em; /* cca 1 řádek */
 
+  }
+  /* Desktop – vertikální centrování jen pro horní řádek */
+  .cell--logo,
+  .cell--headline {
+    align-self: center;
+  }
   .logo-link {
     justify-content: center;
   }
