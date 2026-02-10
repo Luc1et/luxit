@@ -1,56 +1,26 @@
 (() => {
-  const year = document.getElementById("year");
-  if (year) year.textContent = String(new Date().getFullYear());
-
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReduced) return;
 
-  // Reveal on load (simple, no extra content)
-  const items = document.querySelectorAll("[data-reveal]");
-  if (!prefersReduced) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        const el = e.target;
-        const delay = Number(el.getAttribute("data-delay") || "0");
-        el.style.transitionDelay = `${delay}ms`;
-        el.classList.add("is-visible");
-        io.unobserve(el);
-      });
-    }, { threshold: 0.15 });
-
-    items.forEach((el) => io.observe(el));
-  } else {
-    items.forEach((el) => el.classList.add("is-visible"));
-  }
-
-  // Subtle parallax tilt for logo area only
-  const logoWrap = document.getElementById("logoWrap");
-  if (!logoWrap || prefersReduced) return;
+  const canvas = document.getElementById("canvas");
+  if (!canvas) return;
 
   let raf = null;
 
-  const onMove = (ev) => {
+  const onMove = (e) => {
     if (raf) cancelAnimationFrame(raf);
     raf = requestAnimationFrame(() => {
-      const r = logoWrap.getBoundingClientRect();
-      const cx = r.left + r.width / 2;
-      const cy = r.top + r.height / 2;
+      const r = canvas.getBoundingClientRect();
+      const mx = ((e.clientX - r.left) / r.width) * 100;
+      const my = ((e.clientY - r.top) / r.height) * 100;
 
-      const dx = (ev.clientX - cx) / r.width;   // ~ -0.5..0.5
-      const dy = (ev.clientY - cy) / r.height;
-
-      const rx = Math.max(-1, Math.min(1, dy)) * -6; // deg
-      const ry = Math.max(-1, Math.min(1, dx)) * 6;
-
-      logoWrap.style.transform = `perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      canvas.style.background = `
+        radial-gradient(520px 360px at ${mx}% ${my}%,
+          rgba(255, 200, 110, 0.18),
+          transparent 60%)
+      `;
     });
   };
 
-  const onLeave = () => {
-    if (raf) cancelAnimationFrame(raf);
-    logoWrap.style.transform = "perspective(700px) rotateX(0deg) rotateY(0deg)";
-  };
-
   window.addEventListener("mousemove", onMove, { passive: true });
-  logoWrap.addEventListener("mouseleave", onLeave, { passive: true });
 })();

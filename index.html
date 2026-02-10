@@ -7,59 +7,62 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <div class="bg" aria-hidden="true">
-    <div class="orb orb-a"></div>
-    <div class="orb orb-b"></div>
-    <div class="orb orb-c"></div>
-    <div class="grain"></div>
-  </div>
-
-  <main class="stage">
-    <section class="card" id="card">
-      <div class="grid">
-        <!-- TL: logo -->
-        <div class="cell cell-logo" data-reveal>
-          <div class="logo-wrap" id="logoWrap">
-            <div class="ring ring-1"></div>
-            <div class="ring ring-2"></div>
-            <img class="logo" src="assets/images/logo-luxit.png" alt="LUXIT logo" />
-          </div>
-        </div>
-
-        <!-- TR: main text -->
-        <div class="cell cell-hero" data-reveal data-delay="70">
-          <p class="hero">
-            Pomáhám s weby, aplikacemi a čímkoli, co vás zrovna v digitálním světě pálí.
-          </p>
-        </div>
-
-        <!-- BL: small text -->
-        <div class="cell cell-note" data-reveal data-delay="120">
-          <p class="note">
-            Tento web slouží jako jednoduchý rozcestník projektů a aplikací.<br>
-            Projekty a aplikace budou postupně doplňovány.
-          </p>
-        </div>
-
-        <!-- BR: email pill -->
-        <div class="cell cell-cta" data-reveal data-delay="170">
-          <a class="pill" href="mailto:lucie@luxit.cz">
-            <span class="pill-text">lucie@luxit.cz</span>
-            <span class="pill-arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
+  <main class="canvas" id="canvas">
+    <!-- BLOK 1: logo / vizuál -->
+    <section class="panel panel--brand" aria-label="Značka">
+      <div class="brand-inner">
+        <!-- Uprav cestu na svoje logo -->
+        <img class="logo" src="assets/images/logo-luxit.png" alt="LUXIT" />
+        <div class="brand-mark" aria-hidden="true"></div>
       </div>
     </section>
 
-    <footer class="foot">
-      <span>© <span id="year"></span> · LUXIT</span>
-    </footer>
+    <!-- BLOK 2: manifest + projekty -->
+    <section class="panel panel--manifest" aria-label="Manifest">
+      <p class="manifest">
+        Pomáhám s tím, co vás v digitálním světě pálí.
+      </p>
+
+      <a class="projects" href="#projekty">
+        Projekty →
+      </a>
+
+      <!-- tahle věta je schovaná “na úroveň poznámky”, ale je tam -->
+      <p class="fine">
+        Web slouží jako jednoduchý rozcestník projektů a aplikací.
+      </p>
+    </section>
+
+    <!-- BLOK 3: kontakt -->
+    <section class="panel panel--contact" aria-label="Kontakt">
+      <div class="contact-inner">
+        <p class="contact-label">Kontakt</p>
+
+        <!-- Uprav email -->
+        <a class="contact" href="mailto:lucie@luxit.cz">lucie@luxit.cz</a>
+
+        <!-- Volitelně: drobný link vedle mailu -->
+        <a class="contact-alt" href="#projekty">projekty</a>
+      </div>
+    </section>
   </main>
+
+  <!-- Kotva pro projekty: můžeš později vyměnit za reálnou /projekty stránku -->
+  <section id="projekty" class="projects-anchor" aria-label="Projekty">
+    <div class="projects-anchor-inner">
+      <h2>Projekty</h2>
+      <p>
+        Tady může být seznam/odkazy. Zatím můžeš nechat klidně prázdné a jen sem směřovat.
+        Nebo změň href u “Projekty →” na reálnou stránku (např. /projekty).
+      </p>
+    </div>
+  </section>
 
   <script src="main.js"></script>
 </body>
