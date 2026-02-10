@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="LUXIT — pomoc s weby, aplikacemi a digitálním pořádkem." />
   <title>LUXIT</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,236 +11,54 @@
 
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <div class="bg">
-    <div class="bg-orb bg-orb--a"></div>
-    <div class="bg-orb bg-orb--b"></div>
-    <div class="bg-orb bg-orb--c"></div>
-    <div class="bg-grain"></div>
+  <div class="bg" aria-hidden="true">
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <div class="orb orb-c"></div>
+    <div class="grain"></div>
   </div>
 
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <a class="brand" href="#top" aria-label="LUXIT domů">
-        <span class="brand-dot"></span>
-        <span class="brand-text">LUX<span class="brand-text--thin">it</span></span>
-      </a>
+  <main class="stage">
+    <section class="card" id="card">
+      <div class="grid">
+        <!-- TL: logo -->
+        <div class="cell cell-logo" data-reveal>
+          <div class="logo-wrap" id="logoWrap">
+            <div class="ring ring-1"></div>
+            <div class="ring ring-2"></div>
+            <img class="logo" src="assets/logo.png" alt="LUXIT logo" />
+          </div>
+        </div>
 
-      <nav class="nav">
-        <a href="#sluzby">Služby</a>
-        <a href="#jak">Jak to probíhá</a>
-        <a href="#projekty">Projekty</a>
-        <a href="#kontakt" class="nav-cta">Kontakt</a>
-      </nav>
-    </div>
-  </header>
+        <!-- TR: main text -->
+        <div class="cell cell-hero" data-reveal data-delay="70">
+          <p class="hero">
+            Pomáhám s weby, aplikacemi a čímkoli, co vás zrovna v digitálním světě pálí.
+          </p>
+        </div>
 
-  <main id="top" class="container">
-    <section class="hero">
-      <div class="hero-copy" data-animate="fade-up">
-        <p class="eyebrow">Digitální klid. Moderně. Lidsky.</p>
+        <!-- BL: small text -->
+        <div class="cell cell-note" data-reveal data-delay="120">
+          <p class="note">
+            Tento web slouží jako jednoduchý rozcestník projektů a aplikací.<br>
+            Projekty a aplikace budou postupně doplňovány.
+          </p>
+        </div>
 
-        <h1>
-          Pomáhám s weby, aplikacemi a čímkoli,
-          co vás zrovna v digitálním světě pálí.
-        </h1>
-
-        <p class="lead">
-          Rychle najdu, kde je problém — a ještě rychleji navrhnu cestu, jak ho opravit,
-          zjednodušit nebo automatizovat.
-        </p>
-
-        <div class="hero-ctaRow">
-          <a class="btn btn--primary" href="#kontakt">
-            Napsat
-            <span aria-hidden="true">→</span>
-          </a>
-          <a class="btn btn--ghost" href="#sluzby">
-            Co umím
-            <span aria-hidden="true">↓</span>
+        <!-- BR: email pill -->
+        <div class="cell cell-cta" data-reveal data-delay="170">
+          <a class="pill" href="mailto:lucie@luxit.cz">
+            <span class="pill-text">lucie@luxit.cz</span>
+            <span class="pill-arrow" aria-hidden="true">→</span>
           </a>
         </div>
-
-        <div class="chips" data-animate="fade-up" data-delay="80">
-          <span class="chip">weby &amp; landingy</span>
-          <span class="chip">automatizace</span>
-          <span class="chip">digitální úklid</span>
-          <span class="chip">rychlá diagnostika</span>
-        </div>
-      </div>
-
-      <div class="hero-visual" data-animate="fade-up">
-        <div class="hero-imageWrap" id="heroParallax">
-          <img
-            src="assets/images/hero_luxit.png"
-            alt=""
-            class="hero-image"
-            loading="eager"
-          />
-          <div class="hero-shine"></div>
-        </div>
-
-        <div class="hero-float hero-float--a">⏱ Úspora času</div>
-        <div class="hero-float hero-float--b">✨ Klid &amp; pořádek</div>
-        <div class="hero-float hero-float--c">🧩 Řešení na míru</div>
       </div>
     </section>
 
-    <section class="marquee" aria-label="Pás služeb">
-      <div class="marquee-track">
-        <div class="marquee-row">
-          <span>weby</span><span class="dot">•</span>
-          <span>aplikace</span><span class="dot">•</span>
-          <span>automatizace</span><span class="dot">•</span>
-          <span>digitální úklid</span><span class="dot">•</span>
-          <span>návody krok za krokem</span><span class="dot">•</span>
-          <span>weby</span><span class="dot">•</span>
-          <span>aplikace</span><span class="dot">•</span>
-          <span>automatizace</span><span class="dot">•</span>
-          <span>digitální úklid</span><span class="dot">•</span>
-          <span>návody krok za krokem</span><span class="dot">•</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="sluzby" class="section">
-      <div class="section-head" data-animate="fade-up">
-        <h2>Služby</h2>
-        <p>Vyber si jednu věc — nebo mi jen napiš, co tě štve. Domluvíme se.</p>
-      </div>
-
-      <div class="grid cards">
-        <article class="card" data-animate="fade-up">
-          <div class="card-icon">🧭</div>
-          <h3>Rychlá diagnostika</h3>
-          <p>Najdu příčinu problému a navrhnu nejkratší cestu k opravě.</p>
-          <ul class="mini">
-            <li>nefunkční web / rozbitý layout</li>
-            <li>rychlost, SEO basics</li>
-            <li>hosting, DNS, e-mail</li>
-          </ul>
-        </article>
-
-        <article class="card" data-animate="fade-up" data-delay="60">
-          <div class="card-icon">🛠️</div>
-          <h3>Weby &amp; landingy</h3>
-          <p>Čisté, přehledné stránky, co vypadají moderně a dávají smysl.</p>
-          <ul class="mini">
-            <li>GitHub Pages / Cloudflare</li>
-            <li>responzivní design</li>
-            <li>kontaktní formuláře</li>
-          </ul>
-        </article>
-
-        <article class="card" data-animate="fade-up" data-delay="120">
-          <div class="card-icon">⚙️</div>
-          <h3>Automatizace</h3>
-          <p>Zjednoduším opakované věci. Ušetří to čas i nervy.</p>
-          <ul class="mini">
-            <li>skripty, malé tooly</li>
-            <li>zpracování dat</li>
-            <li>napojení služeb</li>
-          </ul>
-        </article>
-
-        <article class="card" data-animate="fade-up" data-delay="180">
-          <div class="card-icon">🧹</div>
-          <h3>Digitální úklid</h3>
-          <p>Pořádek v souborech, heslech, mailu a fotkách bez chaosu.</p>
-          <ul class="mini">
-            <li>struktura složek</li>
-            <li>zálohy</li>
-            <li>bezpečné návyky</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section id="jak" class="section">
-      <div class="section-head" data-animate="fade-up">
-        <h2>Jak to probíhá</h2>
-        <p>Rychlé, srozumitelné, bez zbytečných koleček.</p>
-      </div>
-
-      <div class="timeline">
-        <div class="step" data-animate="fade-up">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <h3>Napíšeš mi</h3>
-            <p>Co se děje, kde, od kdy, případně screenshot / odkaz.</p>
-          </div>
-        </div>
-
-        <div class="step" data-animate="fade-up" data-delay="60">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <h3>Rychle zmapuju situaci</h3>
-            <p>Řeknu ti, co je reálné, co je risk, a co je nejrychlejší win.</p>
-          </div>
-        </div>
-
-        <div class="step" data-animate="fade-up" data-delay="120">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <h3>Dodám výsledek</h3>
-            <p>Kód / postup / oprava. A hlavně: přehledně a bez omáčky.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projekty" class="section">
-      <div class="section-head" data-animate="fade-up">
-        <h2>Projekty</h2>
-        <p>Tenhle blok můžeš později doplnit kartami projektů nebo odkazy.</p>
-      </div>
-
-      <div class="grid projects">
-        <a class="project" href="#" data-animate="fade-up">
-          <div class="project-top">
-            <span class="tag">PWA</span>
-            <span class="tag">MVP</span>
-          </div>
-          <h3>Slevy z letáků</h3>
-          <p>Vyhledávání položek, cenová historie, alerty, optimalizace košíku.</p>
-          <span class="project-more">Detail →</span>
-        </a>
-
-        <a class="project" href="#" data-animate="fade-up" data-delay="60">
-          <div class="project-top">
-            <span class="tag">Web</span>
-            <span class="tag">Brand</span>
-          </div>
-          <h3>LUXIT rozcestník</h3>
-          <p>Minimalistický web s moderní animací a čistou typografií.</p>
-          <span class="project-more">Detail →</span>
-        </a>
-      </div>
-    </section>
-
-    <section id="kontakt" class="section contact">
-      <div class="contact-card" data-animate="fade-up">
-        <h2>Kontakt</h2>
-        <p class="contact-lead">Napiš mi, co potřebuješ vyřešit. Odpovím co nejdřív.</p>
-
-        <div class="contact-row">
-          <a class="contact-pill" href="mailto:lucie@luxit.cz">
-            <span class="pill-label">E-mail</span>
-            <span class="pill-value">lucie@luxit.cz</span>
-          </a>
-
-          <a class="contact-pill" href="#top">
-            <span class="pill-label">Web</span>
-            <span class="pill-value">luxit</span>
-          </a>
-        </div>
-
-        <p class="fine">
-          © <span id="year"></span> LUXIT
-        </p>
-      </div>
-    </section>
+    <footer class="foot">
+      <span>© <span id="year"></span> · LUXIT</span>
+    </footer>
   </main>
 
   <script src="main.js"></script>
