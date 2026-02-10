@@ -238,7 +238,10 @@ body {
   }
 
   .cell--headline {
+    transform: translateY(-0.9em);
     padding-bottom: 48px;
+    display: flex;
+    align-items: center;
   }
 
   .logo-link {
