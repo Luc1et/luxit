@@ -120,8 +120,7 @@ body {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  border: blueviolet;
-}
+  background-color: aqua;
 
 .logo {
   width: min(320px, 90%);
