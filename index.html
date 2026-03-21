@@ -7,62 +7,47 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <main class="canvas" id="canvas">
-    <!-- BLOK 1: logo / vizuál -->
-    <section class="panel panel--brand" aria-label="Značka">
-      <div class="brand-inner">
-        <!-- Uprav cestu na svoje logo -->
-        <img class="logo" src="assets/images/logo-luxit.png" alt="LUXIT" />
-        <div class="brand-mark" aria-hidden="true"></div>
+  <main class="page-shell">
+    <section class="glass-card" id="card" aria-label="LUXIT">
+      <div class="brand">
+        <div class="logo-orbit">
+          <div class="logo-circle">
+            <img class="logo" src="assets/images/logo-luxit-trimmed.png" alt="LUXIT" />
+          </div>
+        </div>
+        <p class="eyebrow">Digitální rozcestník</p>
       </div>
-    </section>
 
-    <!-- BLOK 2: manifest + projekty -->
-    <section class="panel panel--manifest" aria-label="Manifest">
-      <p class="manifest">
-        Pomáhám s tím, co vás v digitálním světě pálí.
-      </p>
+      <div class="content">
+        <p class="manifest">
+          Střípky všeho, co mě v digitálním světě baví
+        </p>
 
-      <a class="projects" href="#projekty">
-        Projekty →
-      </a>
+        <p class="intro">
+          Mám ráda technologie a snažím se držet krok s tím, jak se digitální svět rychle mění.
+          A když se mi podaří i pomoct někomu dalšímu, má to celé smysl...
 
-      <!-- tahle věta je schovaná “na úroveň poznámky”, ale je tam -->
-      <p class="fine">
-        Web slouží jako jednoduchý rozcestník projektů a aplikací.
-      </p>
-    </section>
+        <div class="actions">
+          <a class="button button--primary" href="#projekty">Projekty</a>
+          <a class="button button--ghost" href="mailto:lucie@luxit.cz">lucie@luxit.cz</a>
+        </div>
 
-    <!-- BLOK 3: kontakt -->
-    <section class="panel panel--contact" aria-label="Kontakt">
-      <div class="contact-inner">
-        <p class="contact-label">Kontakt</p>
-
-        <!-- Uprav email -->
-        <a class="contact" href="mailto:lucie@luxit.cz">lucie@luxit.cz</a>
-
-        <!-- Volitelně: drobný link vedle mailu -->
-        <a class="contact-alt" href="#projekty">projekty</a>
+        <section id="projekty" class="projects" aria-label="Projekty">
+          <p class="section-label">MADE BY LUCIE</p>
+          <p class="projects-text">
+          Přehled věcí, které jsem vytvořila nebo právě zkouším.
+          Taková malá mapa toho, kam mě technologie zatím zavedly.
+          </p>
+        </section>
       </div>
     </section>
   </main>
-
-  <!-- Kotva pro projekty: můžeš později vyměnit za reálnou /projekty stránku -->
-  <section id="projekty" class="projects-anchor" aria-label="Projekty">
-    <div class="projects-anchor-inner">
-      <h2>Projekty</h2>
-      <p>
-        Tady může být seznam/odkazy. Zatím můžeš nechat klidně prázdné a jen sem směřovat.
-        Nebo změň href u “Projekty →” na reálnou stránku (např. /projekty).
-      </p>
-    </div>
-  </section>
 
   <script src="main.js"></script>
 </body>

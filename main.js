@@ -2,25 +2,23 @@
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (prefersReduced) return;
 
-  const canvas = document.getElementById("canvas");
-  if (!canvas) return;
+  const card = document.getElementById("card");
+  if (!card) return;
 
-  let raf = null;
-
-  const onMove = (e) => {
-    if (raf) cancelAnimationFrame(raf);
-    raf = requestAnimationFrame(() => {
-      const r = canvas.getBoundingClientRect();
-      const mx = ((e.clientX - r.left) / r.width) * 100;
-      const my = ((e.clientY - r.top) / r.height) * 100;
-
-      canvas.style.background = `
-        radial-gradient(520px 360px at ${mx}% ${my}%,
-          rgba(255, 200, 110, 0.18),
-          transparent 60%)
-      `;
-    });
+  const resetCard = () => {
+    card.style.transform = "";
   };
 
-  window.addEventListener("mousemove", onMove, { passive: true });
+  const onMove = (event) => {
+    const bounds = card.getBoundingClientRect();
+    const px = (event.clientX - bounds.left) / bounds.width;
+    const py = (event.clientY - bounds.top) / bounds.height;
+    const rotateY = (px - 0.5) * 8;
+    const rotateX = (0.5 - py) * 8;
+
+    card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  };
+
+  card.addEventListener("mousemove", onMove, { passive: true });
+  card.addEventListener("mouseleave", resetCard);
 })();
